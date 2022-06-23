@@ -1,0 +1,57 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+enum Orientation {
+  West(0)
+  Nord(1)
+  East(2)
+  South(3)
+}
+
+enum Direction {
+  right(1)
+  left(-1)
+  avancer(0)
+}
+
+class Room {
+  -width:int
+  -height:int
+
+  +Room(int w, int h)
+
+  +getWidth():int
+  +getHeight():int
+  +setWidth(int w):void
+  +setHeight(int h):void
+}
+
+class Position {
+  -x:int
+  -y:int
+
+  +Position(int x, int y)
+
+  +getX():int
+  +getY():int
+  +setX(int x):void
+  +setY(int y):void
+}
+
+class Robot {
+  -room:Room
+  -position:Position
+  -orientation:Orientation
+
+  +Robot(...)
+
+  +getters(...)
+  +setters(...)
+
+  -deplacer(Direction d):void
+  -changerOrientation(Direction direction):void
+  -avancer():void
+  +deplacer(List<Direction> directions ):void
+}
+
+@enduml

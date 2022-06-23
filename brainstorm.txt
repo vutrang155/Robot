@@ -1,0 +1,87 @@
+input : 
+
+Room(int width, int height)
+
+enum Orientation {
+  West(0),
+  Nord(1),
+  East(2),
+  South(3),
+}
+
+enum Direction {
+  right(1),
+  left(-1),
+  avancer(0),
+}
+
+Position(int x, int y)
+
+Instructions(String i)
+
+output :
+
+x=5 y=6 orientation=N
+
+Methodes pour orienter et deplacer aspirateur
+
+changerOrientation(Direction direction) {
+  newOrientation = (robot.orientation + direction) % 4;
+  robot.orientation = newOrientation;
+}
+
+isPositionOK(Position newPosition) {
+  return Dimension.width >= newPosition.x >= 0 && Dimension.height >= newPosition.y >= 0
+}
+
+avancer() {
+  Position newPosition = new Position(robot.position.x, robot.position.y)
+
+  if(robot.orientation == Orientation.West)
+    newPosition = robot.position + (-1, 0)
+  if(robot.orientation == Orientation.Nord)
+    newPosition = robot.position + (0, 1)
+  if(robot.orientation == Orientation.East)
+    newPosition = robot.position + (1, 0)
+  if(robot.orientation == Orientation.South)
+    newPosition = robot.position + (0, -1)
+
+  if(isPositionOK(newPosition)) {
+    robot.position = newPosition;
+  }
+
+}
+
+deplacer( List<Direction> directions ) {
+  for(Direction d: directions) {
+    deplacer(d);
+  }
+}
+
+robot.position = (0, 0)
+robot.orientation = West
+
+deplacer(Direction d) {
+  if(d != Direction.avancer) {
+    changerOrientation(d)
+  }  
+  else {
+    avancer()
+  }
+}
+
+changeDirection(char direction, char directionCurrente) {
+  if()
+}
+
+convertStringToDirections(String str) {
+  
+}
+
+main() {
+  Room room = new Room(10, 10);
+  Position initPosition = new Position(5,5);
+  Robot robot = new Robot(room, position, Orientation.Nord);
+
+  robot.deplacer(List.of(D,A,D,A,D,A,D,A,A));
+}
