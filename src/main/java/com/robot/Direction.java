@@ -1,7 +1,7 @@
 package com.robot;
 
 public enum Direction {
-    Advance(0), Right(1), Left(2);
+    A(0), D(1), G(2);
 
     private final int value;
     private Direction(int value) {

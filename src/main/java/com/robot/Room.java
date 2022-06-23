@@ -1,8 +1,8 @@
 package com.robot;
 
 public class Room {
-  static int width;
-  static int height;
+  int width;
+  int height;
 
   public Room(int width, int height){
     this.width = width;

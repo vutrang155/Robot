@@ -37,7 +37,7 @@ public class Robot {
     }
 
     private void move(Direction direction) throws CloneNotSupportedException {
-        if (direction != Direction.Advance) {
+        if (direction != Direction.A) {
             changeDirection(direction);
         } else {
             advance();
