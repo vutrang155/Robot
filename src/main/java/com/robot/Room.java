@@ -9,7 +9,7 @@ public class Room {
     this.height = height;
   }
 
-  public static int getWidth() {
+  public int getWidth() {
     return width;
   }
 
@@ -17,7 +17,7 @@ public class Room {
     width = w;
   }
 
-  public static int getHeighth() {
+  public int getHeight() {
     return height;
   }
 

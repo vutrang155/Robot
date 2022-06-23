@@ -1,6 +1,6 @@
 package com.robot;
 
-public class Position {
+public class Position implements Cloneable {
   private int x;
   private int y;
 
@@ -23,5 +23,15 @@ public class Position {
 
   public void setY(int newY) {
     y = newY;
+  }
+
+  @Override
+  public String toString() {
+    return "(" + x + "," + y +")";
+  }
+
+  @Override
+  public Position clone() throws CloneNotSupportedException {
+    return (Position) super.clone();
   }
 }

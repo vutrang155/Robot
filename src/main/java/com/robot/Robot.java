@@ -1,18 +1,12 @@
 package com.robot;
 
-import com.robot.Direction;
-import com.robot.Position;
-import com.robot.Orientation;
-import com.robot.Direction;
 import java.util.List;
 
-public class Robot 
-{
+public class Robot {
 
     private Room room;
     private Position position;
     private Orientation orientation;
-
 
     public Robot(Room room, Position position, Orientation orientation) {
         this.room = room;
@@ -36,4 +30,48 @@ public class Robot
         orientation = newOrientation;
     }
 
+    private void changeDirection(Direction direction) {
+        int newOrientation = (orientation.getValue() + direction.getValue()) % 4;
+        Orientation valueNewOrientation = Orientation.valueOf(newOrientation);
+        orientation = valueNewOrientation;
+    }
+
+    private void move(Direction direction) throws CloneNotSupportedException {
+        if (direction != Direction.Advance) {
+            changeDirection(direction);
+        } else {
+            advance();
+        }
+    }
+
+    public void move(List<Direction> directions) throws CloneNotSupportedException {
+        for (Direction d : directions) {
+            move(d);
+        }
+    }
+
+    public boolean isPositionOK(Position newPosition) {
+        return newPosition.getX() >= 0 && newPosition.getY() < room.getWidth()
+                && newPosition.getY() >= 0 && newPosition.getY() < room.getHeight();
+    }
+
+    public void advance() throws CloneNotSupportedException {
+        Position newPosition = position.clone(); 
+
+        if (getOrientation() == Orientation.West)
+            newPosition = new Position(getPosition().getX() - 1, getPosition().getY());
+
+        if (getOrientation() == Orientation.North)
+            newPosition = new Position(getPosition().getX(), getPosition().getY() + 1);
+        if (getOrientation() == Orientation.East)
+
+            newPosition = new Position(getPosition().getX() + 1, getPosition().getY());
+        if (getOrientation() == Orientation.South)
+
+            newPosition = new Position(getPosition().getX(), getPosition().getY() - 1);
+
+        if (isPositionOK(newPosition)) {
+            setPosition(newPosition);
+        }
+    }
 }

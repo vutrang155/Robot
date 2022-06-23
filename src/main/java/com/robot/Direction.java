@@ -1,7 +1,7 @@
 package com.robot;
 
 public enum Direction {
-    a(0), r(1), l(2);
+    Advance(0), Right(1), Left(2);
 
     private final int value;
     private Direction(int value) {
@@ -12,7 +12,7 @@ public enum Direction {
         return value;
     }
 
-    public static Direction  valueOf(int value) {
+    public static Direction valueOf(int value) {
         return Direction.values()[value];
     }
 } 
